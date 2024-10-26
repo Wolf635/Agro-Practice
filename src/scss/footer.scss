@@ -1,0 +1,85 @@
+.footer {
+  background-color: $greenColor;
+  &__container {
+    max-width: toRem(1380);
+    padding-inline: toRem(40);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: toRem(22);
+    @include adaptiveValue("padding-top", 102, 50);
+    @include adaptiveValue("padding-bottom", 106, 40);
+    @media (max-width: $mobile) {
+      flex-direction: column-reverse;
+      padding-inline: toRem(20);
+    }
+  }
+  &__content {
+    flex: 0 1 50%;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: toEm(1000)) {
+      margin-right: -1.811594%; /* -25/1380 */
+    }
+  }
+  &__title {
+    max-width: toRem(591);
+    color: $whiteColor;
+    line-height: math.div(50, 36);
+    @include adaptiveValue("font-size", 36, 18);
+    @include adaptiveValue("margin-bottom", 49, 15);
+    @media (max-width: $mobile) {
+      text-align: center;
+    }
+  }
+  &__social-network {
+    display: flex;
+    flex: 0 1 toRem(35);
+    gap: toRem(30);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    @media (max-width: $mobile) {
+      justify-content: center;
+      margin-bottom: toRem(30);
+      gap: toRem(18);
+    }
+  }
+  &__text {
+    position: absolute;
+    left: 39.230769%; /* 510/1300 */
+    top: 45%; /* 232/1300 */
+    color: #ffffff1a;
+    max-width: toRem(205);
+    @include adaptiveValue("font-size", 144, 36);
+    @media (max-width: $mobile) {
+      left: 3%; /* 510/1300 */
+      top: 0;
+    }
+  }
+}
+.icon-social {
+  height: toRem(60);
+  width: toRem(60);
+  color: $whiteColor;
+  transition: transform 0.3s ease 0s;
+  will-change: transform;
+  @media (max-width: $mobile) {
+    height: toRem(45);
+    width: toRem(45);
+  }
+  &--facebook {
+    stroke: $greenColor;
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.social-network {
+  &__icon {
+  }
+  &__image {
+  }
+}

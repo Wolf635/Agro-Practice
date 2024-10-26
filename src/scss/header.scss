@@ -1,0 +1,200 @@
+.header {
+  &__container {
+    display: flex;
+    align-items: center;
+    column-gap: toRem(20);
+    justify-content: space-between;
+    position: relative;
+    padding-top: toRem(5);
+    @include adaptiveValue("min-height", 93, 60);
+    @media (max-width: $mobile) {
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        z-index: 1;
+        @include adaptiveValue("min-height", 93, 60);
+      }
+    }
+  }
+  &__logo {
+    flex: 0 1 toRem(136);
+    position: relative;
+    z-index: 3;
+    img {
+      max-width: 100%;
+    }
+  }
+  &__menu {
+    @media (max-width: $mobile) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      background-color: #ffffff;
+      left: -100%;
+      transform: scale(0.1);
+      transition:
+        transform 0.4s ease 0s,
+        left 0.4s ease 0.4s;
+      font-size: toRem(24);
+      row-gap: toRem(25);
+      overflow: auto;
+      padding-top: toRem(100);
+      display: grid;
+      justify-items: center;
+      align-content: flex-start;
+      justify-content: center;
+      z-index: 2;
+      .menu-open & {
+        transform: scale(1);
+        left: 0;
+        transition:
+          transform 0.4s ease 0.3s,
+          left 0.4s ease 0s;
+      }
+    }
+  }
+  &__social-network {
+  }
+}
+.menu {
+  &__list {
+    display: flex;
+    align-items: center;
+    font-size: toRem(16);
+    flex-wrap: wrap;
+    row-gap: toRem(5);
+    align-content: start;
+    @include adaptiveValue("column-gap", 50, 20, 0, 1440, 767.98);
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      row-gap: toRem(20);
+      font-size: toRem(24);
+    }
+  }
+  &__item {
+    &.item-open {
+    }
+  }
+  &__link {
+    transition: color 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $greenColor;
+      }
+    }
+  }
+}
+.social-network {
+  display: flex;
+  column-gap: toRem(15);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  row-gap: toRem(10);
+  justify-content: center;
+  flex-shrink: 0;
+  @media (max-width: $mobile) {
+    margin-left: auto;
+    margin-right: percent(60, 768);
+  }
+  @media (max-width: toEm(550)) {
+    margin-right: 0;
+  }
+
+  &__icon {
+    flex: 0 1 toRem(40);
+    height: toRem(40);
+    width: toRem(40);
+    &--margin {
+      flex: 0 1 toRem(60);
+      height: toRem(60);
+      width: toRem(60);
+      @media (max-width: $mobile) {
+        flex: 0 1 toRem(45);
+        height: toRem(45);
+        width: toRem(45);
+      }
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        filter: saturate(300%);
+      }
+    }
+  }
+  &__image {
+    max-width: 100%;
+  }
+}
+//Burger
+
+.icon-menu {
+  display: none;
+  @media (max-width: $mobile) {
+    display: block;
+    width: toRem(35);
+    height: toRem(24);
+    position: relative;
+    z-index: 15;
+    @media (any-hover: none) {
+      cursor: default;
+    }
+    span {
+      height: toRem(2);
+      top: calc(50% - toRem(1));
+      width: toRem(35);
+      background-color: $greenColor;
+      transition: transform 0.5s ease-in-out 0.1s;
+      transform: scale(1);
+      position: absolute;
+      left: 0;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      left: 0;
+      background-color: $greenColor;
+      height: toRem(2);
+    }
+    &::before {
+      bottom: 0;
+      //top: calc(100% - toRem(2));
+      transition:
+        bottom 0.3s ease 0.3s,
+        transform 0.5s ease 0s;
+    }
+    &::after {
+      top: 0;
+      transition:
+        top 0.3s ease 0.3s,
+        transform 0.5s ease 0s;
+    }
+    .menu-open & {
+      span {
+        // width: 0;
+        transform: scale(0);
+      }
+      &::before {
+        transition:
+          bottom 0.3s ease 0s,
+          transform 0.5s ease 0.3s;
+        transform: rotate(-45deg);
+        bottom: calc(50% - toRem(1));
+      }
+      &::after {
+        transition:
+          top 0.3s ease 0s,
+          transform 0.5s ease 0.3s;
+        transform: rotate(45deg);
+        top: calc(50% - toRem(1));
+      }
+    }
+  }
+}
